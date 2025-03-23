@@ -64,6 +64,4 @@
     }
     let humanScore=0;
     let computerScore=0;
-    for (let index = 0; index < 5; index++) {
-        playGame();
-    }
+    playGame();
