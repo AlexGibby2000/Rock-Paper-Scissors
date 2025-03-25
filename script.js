@@ -1,67 +1,79 @@
-    function playGame(){
+    function playGame(hC){
         function getComputerChoice(){
             return Math.floor(Math.random()*3);
-        }
-        function getHumanChoice(question){
-            let  choice = prompt(question+"Choose a weapon: Rock, Paper, or Scissors");
-            choice=choice.toLowerCase();
-            if(choice==="rock"||choice==="paper"||choice==="scissors"){
-                return choice;
-            }
-            else{
-                return getHumanChoice("Thats not a choice, ");
-            }
         }
         function playRound(hC, cC){
         
             if(cC==1){
                 if(hC=="rock"){
-                    console.log("It's a Draw");
+                    displayResults("It's a Draw");
                 }
                 else if(hC=="paper"){
-                    console.log("You Win! Paper beats Rock.");
                     humanScore++;
+                    displayResults("You Win! Paper beats Rock.");
+                    
                 }
                 else{
-                    console.log("You Lose! Rock beats Scissors");
                     computerScore++;
+                    displayResults("You Lose! Rock beats Scissors");
+                    
                 }
             }
             else if(cC==2){
                 if(hC=="rock"){
-                    console.log("You Lose! Paper beats Rock.");
                     computerScore++;
+                    displayResults("You Lose! Paper beats Rock.");
+                    
                 }
                 else if(hC=="paper"){
-                    console.log("It's a Draw");
+                    displayResults("It's a Draw");
         
                 }
                 else{
-                    console.log("You Win! Scissors beats Paper");
                     humanScore++;
+                    displayResults("You Win! Scissors beats Paper");
+                    
                 }
         
             }
             else{
                 if(hC=="rock"){
-                    console.log("You Win! Rock beats Scissors");
                     humanScore++;
+                    displayResults("You Win! Rock beats Scissors");
+                   
                 }
                 else if(hC=="paper"){
-                    console.log("You Lose! Scissors beat Paper");
                     computerScore++;
+                    displayResults("You Lose! Scissors beat Paper");
+                    
                 }
                 else{
-                    console.log("It's a Draw");
+                    displayResults("It's a Draw");
                 }
             }
         }
-        const humanSelection = getHumanChoice("");
+        const humanSelection = hC;
         const computerSelection = getComputerChoice();
     
         playRound(humanSelection, computerSelection);
 
     }
+    function displayResults(result){
+        const content=document.getElementById("results");
+        if(humanScore>=5){
+            content.textContent=result+" You win the game the final score is: "+humanScore+"-"+computerScore;
+            humanScore=0;
+            computerScore=0;
+        }
+        else if(computerScore>=5){
+            content.textContent=result+" You Lose the game the final score is: "+humanScore+"-"+computerScore;
+            humanScore=0;
+            computerScore=0;
+        }
+        else{
+            content.textContent=result+" \nHuman Score: "+humanScore+"\nComputer Score: "+computerScore;
+        }
+
+    }
     let humanScore=0;
     let computerScore=0;
-    playGame();

@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
+    <input id="Rock" type="button" value="Rock" onclick="playGame('rock');"/>
+    <input id="Paper" type="button" value="Paper" onclick="playGame('paper');"/>
+    <input id="Scissors" type="button" value="Scissors" onclick="playGame('scissors');"/>
+    <div id="results"></div>
 </body>
 </html>
